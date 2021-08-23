@@ -1,4 +1,13 @@
+var currentHour = moment().format("k");
+var currentTime = moment().format("dddd, MMMM Do YYYY, h:mm:ss a") 
+// sets the time and day displayed at the top of the screen
+$("#currentDay").text(""+currentTime);
 
+//once per second, updates date and time text
+setInterval(function () { 
+    var currentTime = moment().format("dddd, MMMM Do YYYY, h:mm:ss a") 
+    $("#currentDay").text(""+currentTime); 
+}, 1000);
 // for loop counts to 24 and appends html for each input field with slight modifications based on their assigned hour
 // result is a list of entries classed and displaying their time 
 for (var i = 1; i < 25; i++) {
@@ -16,10 +25,7 @@ for (var i = 1; i < 25; i++) {
     else {
         hour = hour + "AM";
     };
-    // var eachLine = $("div");
-    //     eachLine.html(
-    // '<div class="input-group mb-3"> <span class="input-group-text" id="addon-wrapping">1AM</span> <input type="text" class="form-control" placeholder="Recipient username" aria-label="Recipient username" aria-describedby="button-addon2"> <button class="btn btn-outline-secondary saveBtn" type="button" id="button-addon2">Button</button></div>'
-    //     );
+
     $(".container").append('<div class="input-group mb-3 ' + hour + '" > <span class="input-group-text" id="addon-wrapping">' + hour + '</span> <input type="text" class="form-control ' + hour + '" placeholder="Recipient username" aria-label="Recipient username" aria-describedby="button-addon2"> <button class="btn btn-outline-secondary saveBtn ' + hour + '" type="button" id="button-addon2">Button</button></div>');
 };
 
@@ -41,7 +47,19 @@ for (var i = 1; i < 25; i++) {
         hour = hour + "AM";
     };
 
-    $("input."+hour).val(localStorage.getItem(hour));
+    $("input." + hour).val(localStorage.getItem(hour));
+    //compares each text field to the current hour 
+    //and assigns a relevant color
+    if (i < currentHour) {
+        $("input." + hour).css("background-color", "#d3d3d3");
+
+    }
+    else if (i == currentHour) {
+        $("input." + hour).css("background-color", "#ff6961");
+    }
+    else if (i > currentHour) {
+        $("input." + hour).css("background-color", "#77dd77");
+    }
 
 };
 
@@ -70,14 +88,14 @@ $("button").on("click", function (event) {
         else {
             hourClick = hourClick + "AM";
         };
-// If target has class = hourClick, set local storag item named after hourClick 
-// and set new local storage item equal to input.hourclick.val()
+        // If target has class = hourClick, set local storag item named after hourClick 
+        // and set new local storage item equal to input.hourclick.val()
 
-/*tldr: run through each number same way as first for loop, to determine which button you've clicked on
-and save the information in that buttons respective text field*/ 
+        /*tldr: run through each number same way as first for loop, to determine which button you've clicked on
+        and save the information in that buttons respective text field*/
         if (target.is("." + hourClick)) {
             console.log("got " + hourClick + "!");
-            console.log($("input."+hourClick).val());
+            console.log($("input." + hourClick).val());
             localStorage.setItem(hourClick, $("input." + hourClick).val());
         };
 
