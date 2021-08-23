@@ -26,7 +26,7 @@ for (var i = 1; i < 25; i++) {
         hour = hour + "AM";
     };
 
-    $(".container").append('<div class="input-group mb-3 ' + hour + '" > <span class="input-group-text" id="addon-wrapping">' + hour + '</span> <input type="text" class="form-control ' + hour + '" placeholder="Recipient username" aria-label="Recipient username" aria-describedby="button-addon2"> <button class="btn btn-outline-secondary saveBtn ' + hour + '" type="button" id="button-addon2">Button</button></div>');
+    $(".container").append('<div class="input-group mb-3 ' + hour + '" > <span class="input-group-text" id="addon-wrapping">' + hour + '</span> <input type="text" class="form-control ' + hour + '" placeholder="Carpe Diem" aria-label="Carpe Diem" aria-describedby="button-addon2"> <button class="btn btn-outline-secondary saveBtn ' + hour + '" type="button" id="button-addon2">Save plan</button></div>');
 };
 
 //using the same loop as above (could probably shorten this) iterating through each
