@@ -6,6 +6,7 @@ The day planner tracks and displays time, allows you to split up your activities
 
 ## Installation
 All necessary files included.
+https://ez-m.github.io/day-planner/ - link to deployed site
 
 ## Use
 Type into any text field to plan your day, and use that field's dedicated save button to verify your changes. 
